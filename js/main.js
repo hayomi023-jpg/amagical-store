@@ -1,10 +1,10 @@
 const PRODUCTS = [
-    { id: 1, name: 'VOID TEE', cat: 'tops', price: 45, emoji: '👕', desc: 'Oversized heavy cotton, minimal drop shoulder.' },
-    { id: 2, name: 'PHANTOM CARGO', cat: 'bottoms', price: 85, emoji: '👖', desc: 'Technical fabric with multi-pocket utility.' },
-    { id: 3, name: 'NEON BEANIE', cat: 'acc', price: 25, emoji: '🧶', desc conceito: 'Acid green contrast knit.' },
-    { id: 4, name: 'GHOST HOODIE', cat: 'tops', price: 110, emoji: '🧥', desc: 'Double-layered fleece, heavy weight.' },
-    { id: 5, name: 'CYBER RUNNERS', cat: 'acc', price: 160, emoji: '👟', desc: 'Futuristic silhouette, high-grip sole.' },
-    { id: 6, name: 'SKELETON BELT', cat: 'acc', price: 30, emoji: '🎗️', desc: 'Industrial nylon with steel buckle.' },
+    { id: 1, name: 'VOID TEE', cat: 'tops', price: 45, emoji: '👕', desc: 'Oversized heavy cotton, minimal drop shoulder. Shipping: 7-14 days.' },
+    { id: 2, name: 'PHANTOM CARGO', cat: 'bottoms', price: 85, emoji: '👖', desc: 'Technical fabric with multi-pocket utility. Shipping: 7-14 days.' },
+    { id: 3, name: 'NEON BEANIE', cat: 'acc', price: 25, emoji: '🧶', desc: 'Acid green contrast knit. Shipping: 5-10 days.' },
+    { id: 4, name: 'GHOST HOODIE', cat: 'tops', price: 110, emoji: '🧥', desc: 'Double-layered fleece, heavy weight. Shipping: 7-14 days.' },
+    { id: 5, name: 'CYBER RUNNERS', cat: 'acc', price: 160, emoji: '👟', desc: 'Futuristic silhouette, high-grip sole. Shipping: 10-20 days.' },
+    { id: 6, name: 'SKELETON BELT', cat: 'acc', price: 30, emoji: '🎗️', desc: 'Industrial nylon with steel buckle. Shipping: 5-10 days.' },
 ];
 
 let cart = JSON.parse(localStorage.getItem('magical_cart')) || [];
@@ -13,6 +13,8 @@ function init() {
     renderProducts('all');
     updateCartUI();
     startDropTimer();
+    initCursor();
+    setTimeout(openModal, 3000);
 }
 
 function renderProducts(filter) {
@@ -82,26 +84,14 @@ function updateCartUI() {
     document.getElementById('cartTotal').textContent = '£' + total;
 }
 
-function openCart() {
-    document.getElementById('cartPanel').classList.add('open');
-    document.getElementById('cartOverlay').classList.add('open');
-}
-
-function closeCart() {
-    document.getElementById('cartPanel').classList.remove('open');
-    document.getElementById('cartOverlay').classList.remove('open');
-}
-
 async function checkout() {
     showToast('Generating secure session...');
-    
     try {
         const response = await fetch('/api/checkout', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ items: cart })
         });
-
         const data = await response.json();
         if (data.url) {
             window.location.href = data.url;
@@ -114,6 +104,16 @@ async function checkout() {
     }
 }
 
+function openCart() {
+    document.getElementById('cartPanel').classList.add('open');
+    document.getElementById('cartOverlay').classList.add('open');
+}
+
+function closeCart() {
+    document.getElementById('cartPanel').classList.remove('open');
+    document.getElementById('cartOverlay').classList.remove('open');
+}
+
 function showToast(msg) {
     const t = document.getElementById('toast');
     t.textContent = msg;
@@ -123,35 +123,26 @@ function showToast(msg) {
 
 function startDropTimer() {
     const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 7); // Set to 7 days from now
-
+    targetDate.setDate(targetDate.getDate() + 7);
     setInterval(() => {
         const now = new Date().getTime();
         const distance = targetDate - now;
-
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById('drop-timer').textContent = \d : \h : \m : \s;
+        document.getElementById('drop-timer').textContent = \\d : \h : \m : \s\;
     }, 1000);
 }
 
-window.onload = init;
-
-
-// Custom Cursor Logic
 function initCursor() {
     const cursor = document.createElement('div');
     cursor.className = 'custom-cursor';
     document.body.appendChild(cursor);
-
     window.addEventListener('mousemove', (e) => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
-
     document.querySelectorAll('a, button').forEach(el => {
         el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(4)');
         el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
@@ -173,7 +164,4 @@ function submitDrop() {
     closeModal();
 }
 
-// Add to init
-initCursor();
-setTimeout(openModal, 3000); // Show drop modal after 3 seconds
-
+window.onload = init;
