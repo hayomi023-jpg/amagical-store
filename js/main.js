@@ -1,10 +1,28 @@
 const PRODUCTS = [
-    { id: 1, name: 'VOID TEE', cat: 'tops', price: 45, emoji: '👕', desc: 'Oversized heavy cotton, minimal drop shoulder. Shipping: 7-14 days.' },
-    { id: 2, name: 'PHANTOM CARGO', cat: 'bottoms', price: 85, emoji: '👖', desc: 'Technical fabric with multi-pocket utility. Shipping: 7-14 days.' },
-    { id: 3, name: 'NEON BEANIE', cat: 'acc', price: 25, emoji: '🧶', desc: 'Acid green contrast knit. Shipping: 5-10 days.' },
-    { id: 4, name: 'GHOST HOODIE', cat: 'tops', price: 110, emoji: '🧥', desc: 'Double-layered fleece, heavy weight. Shipping: 7-14 days.' },
-    { id: 5, name: 'CYBER RUNNERS', cat: 'acc', price: 160, emoji: '👟', desc: 'Futuristic silhouette, high-grip sole. Shipping: 10-20 days.' },
-    { id: 6, name: 'SKELETON BELT', cat: 'acc', price: 30, emoji: '🎗️', desc: 'Industrial nylon with steel buckle. Shipping: 5-10 days.' },
+    { 
+        id: 1, 
+        name: 'NEURAL-VOID OVERSIZE HOODIE', 
+        cat: 'tops', 
+        price: 85, 
+        img: 'https://ae01.alicdn.com/kf/S60746a9386b346b88c3059a4e8d5b638p.jpg', 
+        desc: 'A study in urban decay and digital silence. Heavyweight construction with a silhouette that defies convention. Shipping: 7-14 days.' 
+    },
+    { 
+        id: 2, 
+        name: 'CYBER-SHELTER TECH CARGOS', 
+        cat: 'bottoms', 
+        price: 110, 
+        img: 'https://ae01.alicdn.com/kf/S18864a9386b346b88c3059a4e8d5b639p.jpg', 
+        desc: 'Engineered for the urban jungle. High-utility multi-pocket system with a tapered tactical fit. Shipping: 7-14 days.' 
+    },
+    { 
+        id: 3, 
+        name: 'GLITCH-CORE GRAPHIC TEE', 
+        cat: 'tops', 
+        price: 55, 
+        img: 'https://ae01.alicdn.com/kf/S20864a9386b346b88c3059a4e8d5b640p.jpg', 
+        desc: 'High-density print on premium heavy cotton. A visual manifestation of digital error. Shipping: 7-14 days.' 
+    }
 ];
 
 let cart = JSON.parse(localStorage.getItem('magical_cart')) || [];
@@ -22,12 +40,12 @@ function renderProducts(filter) {
     
     grid.innerHTML = filtered.map(p => 
         <div class="product-card">
-            <div class="product-img"></div>
+            <div class="product-img" style="background-image: url('\'); background-size: cover; background-position: center; font-size: 0;"></div>
             <div class="product-card-details">
-                <div class="product-cat"></div>
-                <div class="product-name"></div>
-                <div class="product-price">£</div>
-                <button class="add-to-cart-btn" onclick="addToCart()">ADD TO CART</button>
+                <div class="product-cat">\</div>
+                <div class="product-name">\</div>
+                <div class="product-price">£\</div>
+                <button class="add-to-cart-btn" onclick="addToCart(\)">ADD TO CART</button>
             </div>
         </div>
     ).join('');
@@ -45,7 +63,7 @@ function addToCart(id) {
     cart.push(product);
     saveCart();
     updateCartUI();
-    showToast(Added  to cart!);
+    showToast(\Added \ to cart!\);
 }
 
 function removeFromCart(id) {
@@ -69,12 +87,12 @@ function updateCartUI() {
     } else {
         container.innerHTML = cart.map((item, idx) => 
             <div class="cart-item">
-                <div class="cart-item-img"></div>
+                <div class="cart-item-img" style="background-image: url('\'); background-size: cover; background-position: center;"></div>
                 <div class="cart-item-details">
-                    <div class="cart-item-name"></div>
-                    <div class="cart-item-price">£</div>
+                    <div class="cart-item-name">\</div>
+                    <div class="cart-item-price">£\</div>
                 </div>
-                <button class="cart-item-remove" onclick="removeFromCart()">✕</button>
+                <button class="cart-item-remove" onclick="removeFromCart(\)">✕</button>
             </div>
         ).join('');
     }
