@@ -84,5 +84,19 @@
     <div id="toast" class="toast"></div>
 
     <script src="js/main.js"></script>
+    <div id="dropModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">✕</button>
+            <div class="modal-inner">
+                <h2 class="glitch-text" data-text="THE VOID">THE VOID</h2>
+                <p>Enter your email to get early access to the next drop. Limited quantities. No second chances.</p>
+                <div class="modal-form">
+                    <input type="email" id="dropEmail" placeholder="EMAIL@ADDRESS.COM">
+                    <button class="btn-primary" onclick="submitDrop()">JOIN ACCESS</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+

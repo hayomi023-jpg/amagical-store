@@ -124,3 +124,40 @@ function startDropTimer() {
 }
 
 window.onload = init;
+
+
+// Custom Cursor Logic
+function initCursor() {
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+
+    window.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(4)');
+        el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+    });
+}
+
+function openModal() {
+    document.getElementById('dropModal').classList.add('open');
+}
+
+function closeModal() {
+    document.getElementById('dropModal').classList.remove('open');
+}
+
+function submitDrop() {
+    const email = document.getElementById('dropEmail').value;
+    if(!email) return showToast('Please enter a valid email');
+    showToast('Access Granted. Watch your inbox.');
+    closeModal();
+}
+
+// Add to init
+initCursor();
+setTimeout(openModal, 3000); // Show drop modal after 3 seconds
