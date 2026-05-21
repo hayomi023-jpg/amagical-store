@@ -22,6 +22,22 @@ const PRODUCTS = [
         price: 55, 
         img: 'https://ae01.alicdn.com/kf/S20864a9386b346b88c3059a4e8d5b640p.jpg', 
         desc: 'High-density print on premium heavy cotton. A visual manifestation of digital error. Shipping: 7-14 days.' 
+    },
+    { 
+        id: 4, 
+        name: 'STATIC-SHIFT CARGO PANTS', 
+        cat: 'bottoms', 
+        price: 95, 
+        img: 'https://ae01.alicdn.com/kf/S78946a9386b346b88c3059a4e8d5b641p.jpg', 
+        desc: 'Refined tactical geometry. Water-resistant shell with adjustable hems for a variable silhouette. Shipping: 7-14 days.' 
+    },
+    { 
+        id: 5, 
+        name: 'VOID-WALKER TECH VEST', 
+        cat: 'tops', 
+        price: 75, 
+        img: 'https://ae01.alicdn.com/kf/S90864a9386b346b88c3059a4e8d5b642p.jpg', 
+        desc: 'The ultimate layer for urban exploration. Lightweight mesh and strategic utility webbing. Shipping: 7-14 days.' 
     }
 ];
 
