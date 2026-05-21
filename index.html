@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MAGICAL STORE – bold streetwear for the fearless. Shop the latest collection of clothing, shoes, and accessories.">
+    <title>MAGICAL STORE | Fearless Streetwear</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">MAGICAL <span>STORE</span></div>
+        <div class="nav-links">
+            <a href="#shop">Shop</a>
+            <a href="#drops">Drops</a>
+            <a href="#about">About</a>
+        </div>
+        <div class="nav-right">
+            <button class="cart-btn" onclick="openCart()">
+                CART <span id="cartCount" class="cart-count">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-left">
+            <div class="hero-tag">New Collection 2026</div>
+            <h1 class="hero-h1 glitch-text" data-text="FEARLESS">FEARLESS<span class="accent">STREETWEAR</span></h1>
+            <p class="hero-desc">
+                Bold designs for those who refuse to blend in. Limited drops. No compromises. High-grade materials crafted for the urban jungle.
+            </p>
+            <div class="hero-actions">
+                <a href="#shop" class="btn-primary">SHOP NOW</a>
+                <a href="#drops" class="btn-secondary">VIEW DROPS</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="hero-visual">
+                <!-- Image will be placed here -->
+                <div class="placeholder-visual">MAGICAL STORE VISUAL</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="drops" class="drops-section">
+        <div class="drops-container">
+            <div class="drop-header">
+                <h2>NEXT DROP</h2>
+                <div id="drop-timer" class="timer">00d : 00h : 00m : 00s</div>
+            </div>
+            <p>Stay alert. The void opens soon.</p>
+        </div>
+    </section>
+
+    <section id="shop" class="shop-section">
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="applyFilters('all')">All</button>
+            <button class="filter-btn" onclick="applyFilters('tops')">Tops</button>
+            <button class="filter-btn" onclick="applyFilters('bottoms')">Bottoms</button>
+            <button class="filter-btn" onclick="applyFilters('acc')">Accessories</button>
+        </div>
+        <div id="product-grid" class="product-grid">
+            <!-- Products injected by JS -->
+        </div>
+    </section>
+
+    <div id="cartOverlay" class="cart-overlay" onclick="closeCart()"></div>
+    <div id="cartPanel" class="cart-panel">
+        <div class="cart-header">
+            <h3>YOUR CART</h3>
+            <button class="close-cart" onclick="closeCart()">✕</button>
+        </div>
+        <div id="cartItems" class="cart-items"></div>
+        <div id="cartFooter" class="cart-footer">
+            <div class="cart-total-row">
+                <span>TOTAL:</span>
+                <span id="cartTotal">£0</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">CHECKOUT NOW</button>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
