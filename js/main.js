@@ -12,7 +12,6 @@ let cart = JSON.parse(localStorage.getItem('magical_cart')) || [];
 function init() {
     renderProducts('all');
     updateCartUI();
-    startDropTimer();
     initCursor();
     setTimeout(openModal, 3000);
 }
@@ -119,20 +118,6 @@ function showToast(msg) {
     t.textContent = msg;
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 3000);
-}
-
-function startDropTimer() {
-    const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 7);
-    setInterval(() => {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        document.getElementById('drop-timer').textContent = ${days}d : h : m : s;
-    }, 1000);
 }
 
 function initCursor() {
