@@ -23,12 +23,12 @@ function renderProducts(filter) {
     
     grid.innerHTML = filtered.map(p => 
         <div class="product-card">
-            <div class="product-img">\</div>
+            <div class="product-img"></div>
             <div class="product-card-details">
-                <div class="product-cat">\</div>
-                <div class="product-name">\</div>
-                <div class="product-price">£\</div>
-                <button class="add-to-cart-btn" onclick="addToCart(\)">ADD TO CART</button>
+                <div class="product-cat"></div>
+                <div class="product-name"></div>
+                <div class="product-price">£</div>
+                <button class="add-to-cart-btn" onclick="addToCart()">ADD TO CART</button>
             </div>
         </div>
     ).join('');
@@ -46,7 +46,7 @@ function addToCart(id) {
     cart.push(product);
     saveCart();
     updateCartUI();
-    showToast(\Added \ to cart!\);
+    showToast(Added  to cart!);
 }
 
 function removeFromCart(id) {
@@ -70,12 +70,12 @@ function updateCartUI() {
     } else {
         container.innerHTML = cart.map((item, idx) => 
             <div class="cart-item">
-                <div class="cart-item-img">\</div>
+                <div class="cart-item-img"></div>
                 <div class="cart-item-details">
-                    <div class="cart-item-name">\</div>
-                    <div class="cart-item-price">£\</div>
+                    <div class="cart-item-name"></div>
+                    <div class="cart-item-price">£</div>
                 </div>
-                <button class="cart-item-remove" onclick="removeFromCart(\)">✕</button>
+                <button class="cart-item-remove" onclick="removeFromCart()">✕</button>
             </div>
         ).join('');
     }
@@ -131,7 +131,7 @@ function startDropTimer() {
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        document.getElementById('drop-timer').textContent = \\d : \h : \m : \s\;
+        document.getElementById('drop-timer').textContent = ${days}d : h : m : s;
     }, 1000);
 }
 
