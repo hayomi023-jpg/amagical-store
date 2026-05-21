@@ -92,11 +92,26 @@ function closeCart() {
     document.getElementById('cartOverlay').classList.remove('open');
 }
 
-function checkout() {
-    showToast('Redirecting to secure checkout...');
-    setTimeout(() => {
-        window.open('https://www.paypal.com', '_blank');
-    }, 1000);
+async function checkout() {
+    showToast('Generating secure session...');
+    
+    try {
+        const response = await fetch('/api/checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ items: cart })
+        });
+
+        const data = await response.json();
+        if (data.url) {
+            window.location.href = data.url;
+        } else {
+            throw new Error(data.error || 'Session failed');
+        }
+    } catch (err) {
+        showToast('Checkout error: ' + err.message);
+        console.error(err);
+    }
 }
 
 function showToast(msg) {
@@ -161,3 +176,4 @@ function submitDrop() {
 // Add to init
 initCursor();
 setTimeout(openModal, 3000); // Show drop modal after 3 seconds
+
